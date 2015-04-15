@@ -21,6 +21,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     # test for the flash to be there
     assert_select "div.alert-success", 1
     assert flash.any?
+    assert is_logged_in?
   end
 
   test "signup denies an invalid submission" do 

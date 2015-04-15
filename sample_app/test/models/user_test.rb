@@ -62,7 +62,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test "eail address should be lowercase" do 
+  test "email address should be lowercase" do 
   	@uppercase_email = "UPPERCASE@eMaiL.CoM"
   	@user.email = @uppercase_email
   	@user.save
@@ -74,4 +74,9 @@ class UserTest < ActiveSupport::TestCase
   	assert_not (@user.email == @uppercase_email)
   	assert (@user.email == @uppercase_email.downcase)
   end
+
+  test "authenticated? should return false for a user with nill digest" do
+  	assert_not @user.authenticated?('')
+  end
+
 end
