@@ -4,7 +4,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
 	def setup
 		@user = users(:michael)
-		puts "\n\n\n\n"
 	end
 
   test "should fail and display error for invalid login" do
@@ -51,6 +50,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test "login without remembering" do
     log_in_as(@user, remember_me: '0')
+    assert_not assigns(:user).remember_token.blank?
     assert_nil cookies['remember_token']
   end
 
