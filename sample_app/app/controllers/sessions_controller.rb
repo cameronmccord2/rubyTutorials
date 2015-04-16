@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   		log_in @user
   		params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
   		@user.remember #This was different than the tutorial to get it to pass, before we were calling 'remember user' which was causing a cookies save again
-  		redirect_to @user
+  		redirect_back_or @user
   	else
   		flash.now[:danger] = 'Invalid email/password combination'
   		render 'new'
