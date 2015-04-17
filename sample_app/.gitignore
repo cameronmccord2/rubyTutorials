@@ -17,4 +17,4 @@
 /tmp
 spring/*.pid
 .DS_Store
-
+coverage
